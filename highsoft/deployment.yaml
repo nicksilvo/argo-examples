@@ -9,12 +9,12 @@ spec:
   selector:
     matchLabels:
       app: http-https-echo
-  template:
-    metadata:
-      labels:
-        app: http-https-echo
-    spec:
-      containers:
+#  template:
+ #   metadata:
+ #     labels:
+#        app: http-https-echo
+#   spec:
+#      containers:
 #name: echo-server
 #          image: hashicorp/http-echo:latest
 #          args:
