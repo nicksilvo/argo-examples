@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/nicksilvo/argo-examples.git
     targetRevision: HEAD
-    path: deploy/kubernetes  
+    path: argo-examples/highsoft  
   destination:
     server: https://kubernetes.default.svc
     namespace: http-https-echo
