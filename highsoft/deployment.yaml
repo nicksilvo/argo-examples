@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-httpd-echo
+  labels:
+    app: http-httpd-echo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: http-httpd-echo
+  template:
+    metadata:
+      labels:
+        app: http-httpd-echo
+    spec:
+      containers:
+name: http-httpd-echo
+        image: hashicorp/http-echo:0.2.3
+        args:
+"-text=Hello from http-httpd-echo"
+        ports:
+containerPort: 5678
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: http-httpd-echo-service
+  labels:
+    app: http-httpd-echo
+spec:
+  type: LoadBalancer
+  selector:
+    app: http-httpd-echo
+  ports:
+protocol: TCP
+    port: 80
+    targetPort: 5678
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application metadata:
+  name: http-httpd-echo
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/nicksilvo/argo-examples.git'
+    targetRevision: main
+    path: argocd-examples
+  destination:
+    server: https://kubernetes.default.svc 
+    namespace: default 
+    syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
