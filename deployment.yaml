@@ -44,7 +44,7 @@ kind: Application metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/YOUR-USER/YOUR-REPO.git'
+    repoURL: 'https://github.com/nicksilvo/argo-examples.git'
     targetRevision: main
     path: argocd-examples
   destination:
