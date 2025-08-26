@@ -16,11 +16,6 @@ spec:
     spec:
       containers:
 name: http-httpd-echo
-#        image: hashicorp/http-echo:0.2.3
-#        args:
-#"-text=Hello from http-httpd-echo"
-        ports:
-containerPort: 5678
 ---
 apiVersion: v1
 kind: Service
