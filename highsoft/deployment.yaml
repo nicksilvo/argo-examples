@@ -31,21 +31,3 @@ spec:
 protocol: TCP
     port: 80
     targetPort: 5678
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application metadata:
-  name: http-httpd-echo
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: 'https://github.com/nicksilvo/argo-examples.git'
-    targetRevision: main
-    path: argocd-examples
-  destination:
-    server: https://kubernetes.default.svc 
-    namespace: default 
-    syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
